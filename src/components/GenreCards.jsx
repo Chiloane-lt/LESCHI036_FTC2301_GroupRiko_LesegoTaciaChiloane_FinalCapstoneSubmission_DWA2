@@ -49,8 +49,6 @@ export default function GenreCards(){
     )
   })
 
-
-
   return (
     <>
     <Carousel name="Genres" cards={genreCards}/>
