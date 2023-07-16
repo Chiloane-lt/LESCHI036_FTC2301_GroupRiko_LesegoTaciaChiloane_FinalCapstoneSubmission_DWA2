@@ -5,6 +5,9 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}"
   ],
   theme: {
+    fontFamily: {
+      'sans': ['Inter', 'system-ui'],
+    },
     extend: {
       fontSize: {
         'dynamic': "clamp(0.5rem, 5vw, 2.5rem)",

@@ -6,7 +6,7 @@ import './App.css'
 function App() {
   return (
     <>
-      <h1>BOB</h1>
+      <h1>Where BOB?</h1>
     </>
   )
 }
