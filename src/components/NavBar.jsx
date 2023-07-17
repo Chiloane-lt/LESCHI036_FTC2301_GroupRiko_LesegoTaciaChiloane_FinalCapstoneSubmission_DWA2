@@ -13,8 +13,8 @@ export default function NavBar() {
           <span className="font-bold">BOX</span>
         </h1>
         <div className="w-1/4 flex justify-between">
-        <FontAwesomeIcon icon={faHeart} className="h-6 min-[300px]:h-8 text-mint-cream"/>
-        <FontAwesomeIcon icon={faCircleUser} className="h-6 min-[300px]:h-8 text-mint-cream"/>
+        <FontAwesomeIcon icon={faHeart} className="h-4 min-[300px]:h-6 text-mint-cream"/>
+        <FontAwesomeIcon icon={faCircleUser} className="h-4 min-[300px]:h-6 text-mint-cream"/>
         </div>
       </nav>
     </header>
