@@ -12,7 +12,7 @@ export default function NavBar() {
           Talk
           <span className="font-bold">BOX</span>
         </h1>
-        <div className="w-1/4 flex justify-between">
+        <div className="w-1/4 flex justify-around">
         <FontAwesomeIcon icon={faHeart} className="h-4 min-[300px]:h-6 text-mint-cream"/>
         <FontAwesomeIcon icon={faCircleUser} className="h-4 min-[300px]:h-6 text-mint-cream"/>
         </div>
