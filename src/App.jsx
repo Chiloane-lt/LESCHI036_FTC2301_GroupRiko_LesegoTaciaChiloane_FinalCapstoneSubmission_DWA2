@@ -5,32 +5,27 @@
  * Carousel - Check overscroll behaviour
  * App - useContext to pass theme & show data
  * App - useReducer to track state
+ * App - Lazy load logging in & favourites
  */
 
-
-
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import GenreCards from './components/GenreCards'
-import Featured from './components/Featured'
+import { ShowsContext, ShowsContextProvider } from './hooks/showsContext'
+
+import Tester from './components/Tester'
 
 function App() {
-
-  const [ shows, setShows ] = useState();
-
-  useEffect(() => {
-    fetch('https://podcast-api.netlify.app/shows')
-    .then(response => response.json())
-    .then(showData => setShows(showData))
-  }, []) 
 
   return (
     <>
       <NavBar />
       <Hero />
       <GenreCards />
-      <Featured showId="6717"/>
+      <ShowsContextProvider>
+        <Tester />
+      </ShowsContextProvider>
     </>
   )
 }
