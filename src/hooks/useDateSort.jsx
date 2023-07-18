@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 export const useDateSort = (unsortArray, sortOrder) => {
 
-  if(!unsortArray || !sortOrder) {
-    return console.log('missing function params')
+  if(!unsortArray) {
+    return undefined
   }
 
   let sortedArray = [...unsortArray];
