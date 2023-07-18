@@ -63,22 +63,26 @@ export const Preview = (props) => {
 
         if(index === genres.length - 1){
           return (
-            <a href="#" key={index} ><FontAwesomeIcon icon={genresList[genre]}/></a>
+            <a href="#" key={index} >
+              <FontAwesomeIcon icon={genresList[genre]}/>
+            </a>
           )
         }
         return (
-          <a href="#" key={index} ><FontAwesomeIcon icon={genresList[genre]}/>, </a>
+          <a href="#" key={index} >
+            <FontAwesomeIcon icon={genresList[genre]}/>,
+          </a>
         )
       })
 
     return (
-      <button>
-          <img src={image} alt="Podcast preview image"/>
-          <div>
-            <h2>{title}</h2>
+      <button className="text-dark-green text-sm bg-mint-cream h-20  w-[100%] flex items-center m-auto overflow-hidden">
+          <img src={image} alt="Podcast preview image" className="h-[80%] overflow-hidden"/>
+          <div className="text-left">
+            <h2 className="font-bold">{title}</h2>
             <h3>Seasons: {seasons.length}</h3>
             <p>Last Updated: {readeableDate}</p>
-            {genreTags && <p>{genreTags}</p>}
+            {genreTags && <p className="font-thin italic">{genreTags}</p>}
           </div>
       </button>
     )
