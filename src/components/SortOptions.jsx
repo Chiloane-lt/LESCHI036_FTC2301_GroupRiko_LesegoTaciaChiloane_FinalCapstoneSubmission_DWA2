@@ -4,25 +4,19 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export const SortOptions = (props) => {
 
-  // Returns 4 buttons
-  // Onclick, changes update sort
-  // whenever sort options change, UPDATE PARENT STATE and rerender
-  // Use useEffect to watch & rerender
-
-  const { sort } = props;
-  const [ sortOrder, setSortOrder ] = useState(sort)
+  const { setSort } = props;
 
   const handleSortAlphaDes = () => {
-    setSortOrder('Z-A')
+    setSort('Z-A')
   }
   const handleSortAlphaAsc = () => {
-    setSortOrder('A-Z')
+    setSort('A-Z')
   }
   const handleSortDateDes = () => {
-    setSortOrder('newest')
+    setSort('newest')
   }
   const handleSortDateAsc = () => {
-    setSortOrder('oldest')
+    setSort('oldest')
   }
 
   return (
