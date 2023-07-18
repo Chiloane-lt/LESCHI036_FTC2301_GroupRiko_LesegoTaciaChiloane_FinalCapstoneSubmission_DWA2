@@ -1,9 +1,14 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Preview } from "./Preview";
 import { ShowsContext } from "../hooks/showsContext";
+import { useDateSort } from "../hooks/useDateSort";
 
 export const AllPreviews = () => {
   const allShows = useContext(ShowsContext);
+  const [ sort, setSort ] = useState('oldest');
+
+  const test = useDateSort(allShows, sort);
+  console.log(test);
 
   if(!allShows){
     return <h1>Loading Previews...</h1>

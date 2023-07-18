@@ -10,6 +10,7 @@
  * App - useReducer to track state
  * App - Lazy load logging in & favourites
  * App - Add error catching for all fetch requests.
+ * App - Prettier all files before shipping off
  * Unsubscribe from all API calls by retunring useEffect cleanups
  */
 
