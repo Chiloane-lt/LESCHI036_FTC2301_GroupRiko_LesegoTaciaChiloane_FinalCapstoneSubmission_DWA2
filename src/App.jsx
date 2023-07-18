@@ -3,6 +3,7 @@
  * Preview - Update preview styling
  * Preview - Match placeholder to actual preview
  * Preview - Shrink text with screen size
+ * Preview - Improve above by fixing text wrap on small screens
  * Carousel - Increase width of area for arrows
  * Carousel - Check overscroll behaviour
  * App - useContext to pass theme & show data
