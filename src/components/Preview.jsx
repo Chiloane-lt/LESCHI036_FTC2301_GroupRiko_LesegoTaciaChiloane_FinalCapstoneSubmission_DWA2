@@ -76,13 +76,13 @@ export const Preview = (props) => {
       })
 
     return (
-      <button className="text-dark-green text-sm bg-mint-cream h-20  w-[100%] flex items-center m-auto overflow-hidden">
-          <img src={image} alt="Podcast preview image" className="h-[80%] overflow-hidden"/>
+      <button className="text-dark-green text-sm bg-mint-cream shadow-md h-24  w-[100%] flex items-center m-auto overflow-hidden">
+          <img src={image} alt="Podcast preview image" className="h-[75%] overflow-hidden"/>
           <div className="text-left">
             <h2 className="font-bold">{title}</h2>
-            <h3>Seasons: {seasons.length}</h3>
-            <p>Last Updated: {readeableDate}</p>
-            {genreTags && <p className="font-thin italic">{genreTags}</p>}
+            <h3 className="font-light">Seasons: {seasons.length}</h3>
+            <p className="font-light">Last Updated: {readeableDate}</p>
+            {genreTags && <p>{genreTags}</p>}
           </div>
       </button>
     )
