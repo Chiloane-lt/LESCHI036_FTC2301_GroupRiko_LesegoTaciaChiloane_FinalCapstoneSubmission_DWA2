@@ -5,7 +5,7 @@ import { useDateSort } from "../hooks/useDateSort";
 import { useAlphaSort } from "../hooks/useAlphaSort";
 import { SortOptions } from "./SortOptions";
 
-export const AllPreviews = () => {
+export default function AllPreviews() {
   const showsData = useContext(ShowsContext);
 
   const [ allShows, setAllShows ] = useState(showsData);

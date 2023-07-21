@@ -18,20 +18,18 @@ import React from 'react'
 import NavBar from './components/NavBar'
 import Hero from './components/Hero'
 import GenreCards from './components/GenreCards'
-import { ShowsContext, ShowsContextProvider } from './hooks/showsContext'
-
-import { AllPreviews } from './components/AllPreviews'
+import AllPreviews from './components/AllPreviews'
+import { Signup } from './components/SignupPage'
+import AudioPlayer from './components/AudioPlayer'
 
 function App() {
 
   return (
     <>
-      <NavBar />
+      <NavBar/>
       <Hero />
       <GenreCards />
-      <ShowsContextProvider>
-        <AllPreviews/>
-      </ShowsContextProvider>
+      <AllPreviews />
     </>
   )
 }
