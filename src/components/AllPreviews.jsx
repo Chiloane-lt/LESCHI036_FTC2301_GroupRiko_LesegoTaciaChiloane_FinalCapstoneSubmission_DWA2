@@ -10,15 +10,6 @@ export default function AllPreviews() {
 
   const sortedShows = useSort(showsData, sort);
 
-  /**
-   * Add search options
-   * Display shows
-   * Change sort if search options are clicked
-   * Pass function to update sort from parent to child
-   * i.e from AllPreviews to SortOptions
-   * Rerender after click
-   */
-
   if(!sortedShows){
     return <h1>Loading Previews...</h1>
   }
