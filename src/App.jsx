@@ -22,14 +22,18 @@ import AllPreviews from './components/AllPreviews'
 import { Signup } from './components/SignupPage'
 import AudioPlayer from './components/AudioPlayer'
 
+import { ShowsContext, ShowsContextProvider } from './hooks/showsContext'
+
 function App() {
 
   return (
     <>
-      <NavBar/>
+      <NavBar />
       <Hero />
       <GenreCards />
-      <AllPreviews />
+      <ShowsContextProvider>
+        <AllPreviews/>
+      </ShowsContextProvider>
     </>
   )
 }

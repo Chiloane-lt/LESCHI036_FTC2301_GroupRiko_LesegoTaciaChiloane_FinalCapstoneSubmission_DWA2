@@ -1,15 +1,14 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Preview } from "./Preview";
 import { ShowsContext } from "../hooks/showsContext";
-import { useDateSort } from "../hooks/useDateSort";
-import { useAlphaSort } from "../hooks/useAlphaSort";
+import { useSort } from "../hooks/useSort";
 import { SortOptions } from "./SortOptions";
 
 export default function AllPreviews() {
   const [ showsData, setShowsData ] = useContext(ShowsContext);
   const [ sort, setSort ] = useState('none');
 
-  const sortedShows = useAlphaSort(showsData, sort);
+  const sortedShows = useSort(showsData, sort);
 
   /**
    * Add search options
@@ -24,14 +23,14 @@ export default function AllPreviews() {
     return <h1>Loading Previews...</h1>
   }
 
-  // const allPreviews = allShows.map((show) => {
-  //   return <Preview key={show.id} showId={show.id} genres={show.genres}/>
-  // })
+  const allPreviews = sortedShows.map((show) => {
+    return <Preview key={show.id} showId={show.id} genres={show.genres}/>
+  })
 
-  // return (
-  //   <section className="bg-platinum p-4 flex flex-col gap-2">
-  //     <SortOptions setSort={setSort} />
-  //     {allPreviews}
-  //   </section>
-  // )
+  return (
+    <section className="bg-platinum p-4 flex flex-col gap-2">
+      <SortOptions setSort={setSort} />
+      {allPreviews}
+    </section>
+  )
 }

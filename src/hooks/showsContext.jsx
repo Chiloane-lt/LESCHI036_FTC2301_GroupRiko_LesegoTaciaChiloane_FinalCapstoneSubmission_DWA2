@@ -1,6 +1,6 @@
 import React, { useState, useEffect, createContext, useContext } from 'react'
 
-const ShowsContext = createContext();
+const ShowsContext = createContext([{}, () => {}]);
 
 const ShowsContextProvider = ({ children }) => {
   const [ showsData, setShowsData ] = useState();
@@ -17,7 +17,7 @@ const ShowsContextProvider = ({ children }) => {
   }, [])
 
   return (
-    <ShowsContext.Provider value={showsData}>
+    <ShowsContext.Provider value={[ showsData, setShowsData ]}>
       {children}
     </ShowsContext.Provider>
   );
