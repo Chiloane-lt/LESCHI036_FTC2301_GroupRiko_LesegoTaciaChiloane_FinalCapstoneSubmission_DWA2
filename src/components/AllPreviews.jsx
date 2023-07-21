@@ -6,31 +6,32 @@ import { useAlphaSort } from "../hooks/useAlphaSort";
 import { SortOptions } from "./SortOptions";
 
 export default function AllPreviews() {
-  const showsData = useContext(ShowsContext);
-
-  const [ allShows, setAllShows ] = useState(showsData);
-  
+  const [ showsData, setShowsData ] = useContext(ShowsContext);
   const [ sort, setSort ] = useState('none');
 
-  useEffect(() => {
-    // get current state and make a copy
-    // Pass copy to sort check
-    // set sorted copy as state
-    // Therefore there will not be a need for custom hooks
-  }, [allShows]);
+  const sortedShows = useAlphaSort(showsData, sort);
 
-  if(!allShows){
+  /**
+   * Add search options
+   * Display shows
+   * Change sort if search options are clicked
+   * Pass function to update sort from parent to child
+   * i.e from AllPreviews to SortOptions
+   * Rerender after click
+   */
+
+  if(!sortedShows){
     return <h1>Loading Previews...</h1>
   }
 
-  const allPreviews = allShows.map((show) => {
-    return <Preview key={show.id} showId={show.id} genres={show.genres}/>
-  })
+  // const allPreviews = allShows.map((show) => {
+  //   return <Preview key={show.id} showId={show.id} genres={show.genres}/>
+  // })
 
-  return (
-    <section className="bg-platinum p-4 flex flex-col gap-2">
-      <SortOptions setSort={setSort} />
-      {allPreviews}
-    </section>
-  )
+  // return (
+  //   <section className="bg-platinum p-4 flex flex-col gap-2">
+  //     <SortOptions setSort={setSort} />
+  //     {allPreviews}
+  //   </section>
+  // )
 }
