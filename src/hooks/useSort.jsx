@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export const useAlphaSort = (unsortedArray, sortOrder) => {
+export const useSort = (unsortedArray, sortOrder) => {
 
   if(!unsortedArray){
     return undefined;
@@ -30,6 +30,34 @@ export const useAlphaSort = (unsortedArray, sortOrder) => {
         return -1;
       }
       if (nameA < nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  if(sortOrder === 'oldest') {
+    sortedArray.sort((a, b) => {
+      const dateA = new Date(a.updated).getTime(); 
+      const dateB = new Date(b.updated).getTime(); 
+      if (dateA < dateB) {
+        return -1;
+      }
+      if (dateA > dateB) {
+        return 1;
+      }
+      return 0;
+    });
+  }
+
+  if(sortOrder === 'newest') {
+    sortedArray.sort((a, b) => {
+      const dateA = new Date(a.updated).getTime(); 
+      const dateB = new Date(b.updated).getTime(); 
+      if (dateA > dateB) {
+        return -1;
+      }
+      if (dateA < dateB) {
         return 1;
       }
       return 0;

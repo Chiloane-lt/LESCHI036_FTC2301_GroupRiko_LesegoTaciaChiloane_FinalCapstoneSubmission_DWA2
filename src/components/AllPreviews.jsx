@@ -1,29 +1,29 @@
 import React, { useState, useContext, useEffect } from "react";
 import { Preview } from "./Preview";
 import { ShowsContext } from "../hooks/showsContext";
-import { useDateSort } from "../hooks/useDateSort";
-import { useAlphaSort } from "../hooks/useAlphaSort";
+import { useSort } from "../hooks/useSort";
 import { SortOptions } from "./SortOptions";
 
-export const AllPreviews = () => {
-  const showsData = useContext(ShowsContext);
-
-  const [ allShows, setAllShows ] = useState(showsData);
-  
+export default function AllPreviews() {
+  const [ showsData, setShowsData ] = useContext(ShowsContext);
   const [ sort, setSort ] = useState('none');
 
-  useEffect(() => {
-    // get current state and make a copy
-    // Pass copy to sort check
-    // set sorted copy as state
-    // Therefore there will not be a need for custom hooks
-  }, [allShows]);
+  const sortedShows = useSort(showsData, sort);
 
-  if(!allShows){
+  /**
+   * Add search options
+   * Display shows
+   * Change sort if search options are clicked
+   * Pass function to update sort from parent to child
+   * i.e from AllPreviews to SortOptions
+   * Rerender after click
+   */
+
+  if(!sortedShows){
     return <h1>Loading Previews...</h1>
   }
 
-  const allPreviews = allShows.map((show) => {
+  const allPreviews = sortedShows.map((show) => {
     return <Preview key={show.id} showId={show.id} genres={show.genres}/>
   })
 
