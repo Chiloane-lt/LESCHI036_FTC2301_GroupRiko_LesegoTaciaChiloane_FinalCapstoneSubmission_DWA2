@@ -14,26 +14,16 @@
  * Unsubscribe from all API calls by retunring useEffect cleanups
  */
 
-import React from 'react'
 import NavBar from './components/NavBar'
-import Hero from './components/Hero'
-import GenreCards from './components/GenreCards'
-import AllPreviews from './components/AllPreviews'
-import { Signup } from './components/SignupPage'
-import AudioPlayer from './components/AudioPlayer'
-
-import { ShowsContext, ShowsContextProvider } from './hooks/showsContext'
+import Home from './pages/Home'
+import ViewShow from './pages/ViewShow'
 
 function App() {
 
   return (
     <>
       <NavBar />
-      <Hero />
-      <GenreCards />
-      <ShowsContextProvider>
-        <AllPreviews/>
-      </ShowsContextProvider>
+      <ViewShow showId="8256"/>
     </>
   )
 }

@@ -58,7 +58,7 @@ export default function ViewShow(props) {
         <img src={show.image} alt={`${show.title} cover image`} className="h-28 shadow-[4px_4px_4px_0px_#F6F6F6]"/>
         <h1>{show.title}</h1>
       </figure>
-      <p className="px-4 py-8 text-center text-sm">{show.description}</p>
+      <p className="px-4 py-8 text-center text-sm text-dark-green">{show.description}</p>
       <Carousel name="Seasons" cards={seasonCards} />
       {isOpen && <Episodes extractedSeason={show.seasons.filter((season) => {
         return season.season === currentSeason;
