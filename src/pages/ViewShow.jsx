@@ -1,10 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Carousel from "../components/Carousel";
+import Episodes from "../components/Episodes";
 
 export default function ViewShow(props) {
 
   const { showId } = props;
   const [ show, setShow ] = useState();
+  const [ currentSeason, setCurrentSeason ] = useState();
+  const [ isOpen, setIsOpen ] = useState(false);
 
   useEffect(() => {
     fetch(`https://podcast-api.netlify.app/id/${showId}`)
@@ -16,9 +19,33 @@ export default function ViewShow(props) {
     return <h1>Loading...</h1>
   }
 
-  const seasonCards = show.seasons.map((season, index) => {
+  // If isOpen is false, just open episode and set to false ✅
+  // If isOpen is already true, then check if current is same as clicked ✅
+  // if same, set isOpen to false then set current season to null ✅
+  // If not same, leave isOpen but set currentSeason to season of just clicked ✅
+  // Show episodes conditionally if isOpen is true ✅
+  // Show episodes by passing it currentshow season ✅
+
+  const seasonVisibilityHandler = (seasonNum) => {
+    if (!isOpen) {
+      setCurrentSeason(seasonNum);
+      setIsOpen(true);
+    }
+
+    if (currentSeason === seasonNum) {
+      setIsOpen(false);
+      setCurrentSeason(null);
+    } else {
+      setCurrentSeason(seasonNum)
+    }
+
+  }
+
+  const seasonCards = show.seasons.map((season) => {
     return (
-      <div key={season.season} className="bg-dark-green h-full aspect-square text-center text-mint-cream">
+      <div key={season.season} onClick={() => {
+        seasonVisibilityHandler(season.season)
+      }} className="bg-dark-green h-full aspect-square text-center text-mint-cream">
         <h2>{season.title}</h2>
         <h3>{season.episodes.length} Episodes</h3>
       </div>
@@ -33,6 +60,9 @@ export default function ViewShow(props) {
       </figure>
       <p className="px-4 py-8 text-center text-sm">{show.description}</p>
       <Carousel name="Seasons" cards={seasonCards} />
+      {isOpen && <Episodes extractedSeason={show.seasons.filter((season) => {
+        return season.season === currentSeason;
+      })}/>}
     </>
   )
 }
