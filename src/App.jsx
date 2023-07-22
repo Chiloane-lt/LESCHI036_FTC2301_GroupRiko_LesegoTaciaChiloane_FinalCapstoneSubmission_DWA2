@@ -14,17 +14,44 @@
  * Unsubscribe from all API calls by retunring useEffect cleanups
  */
 
-import NavBar from './components/NavBar'
-import Home from './pages/Home'
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+
+import Home from "./pages/Home"
+import ErrorPage from "./pages/ErrorPage"
+import Favourites from "./pages/Favourites"
+import User from "./pages/User"
 import ViewShow from './pages/ViewShow'
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Home />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/favourites",
+    element: <Favourites />,
+  },
+  {
+    path: "/user",
+    element: <User />,
+  },
+  {
+    path: "/show/:id",
+    element: <ViewShow />,
+  },
+]);
 
 function App() {
 
   return (
     <>
-      <NavBar />
-      <ViewShow showId="8256"/>
+      <RouterProvider router={router} />
     </>
+
   )
 }
 
