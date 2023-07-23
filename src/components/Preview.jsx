@@ -53,17 +53,17 @@ export const Preview = (props) => {
 
         if(index === genres.length - 1){
           return (
-            <span key={index}>{genresList[genre]}</span>
+            <span key={index} className="font-light italic">{genresList[genre]}</span>
           )}
 
         return (
-          <span key={index}>{genresList[genre]}, </span>
+          <span key={index} className="font-light italic">{genresList[genre]}, </span>
         )
       });
 
     return (
       <Link to={`/show/:id`} className="text-dark-green text-sm bg-mint-cream shadow-md h-24  w-[100%] flex items-center m-auto overflow-hidden">
-          <img src={image} alt="Podcast preview image" className="h-[75%] overflow-hidden"/>
+          <img src={image} alt="Podcast preview image" className="h-[75%]"/>
           <div className="text-left line-clamp-4">
             <h2 className="font-bold">{title}</h2>
             <h3 className="font-light">Seasons: {seasons.length}</h3>
