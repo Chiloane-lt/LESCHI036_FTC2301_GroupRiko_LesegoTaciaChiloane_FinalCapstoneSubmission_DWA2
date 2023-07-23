@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Preview } from "./Preview";
 import { ShowsContext } from "../hooks/showsContext";
 import { useSort } from "../hooks/useSort";

@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Hero() {
   return (
     <section className="bg-[url('https://cdn.pixabay.com/photo/2016/11/29/04/42/conifers-1867371_1280.jpg')] w-full h-[35vh] bg-cover bg-no-repeat flex items-end overflow-hidden">

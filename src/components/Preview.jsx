@@ -1,16 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faStar,
-  faHandHoldingDroplet,
-  faHandcuffs, faLandmark,
-  faMasksTheater,
-  faPhotoFilm, faArrowTrendUp,
-  faRobot,
-  faNewspaper,
-  faChildren,
-} from "@fortawesome/free-solid-svg-icons";
 
 export const Preview = (props) => {
 
@@ -50,42 +39,38 @@ export const Preview = (props) => {
 
       const genreTags = genres.map((genre, index) => {
         const genresList = [
-          faStar,
-          faHandHoldingDroplet,
-          faHandcuffs,
-          faLandmark,
-          faMasksTheater,
-          faPhotoFilm,
-          faArrowTrendUp,
-          faRobot,
-          faNewspaper,
-          faChildren
+          'Featured',
+          'Personal Growth',
+          'True Crime & Investigative Journalism',
+          'History',
+          'Comedy',
+          'Entertainment',
+          'Business',
+          'Fiction',
+          'News',
+          'Kids & Family'
         ];
 
         if(index === genres.length - 1){
           return (
-            <a href="#" key={index} >
-              <FontAwesomeIcon icon={genresList[genre]}/>
-            </a>
-          )
-        }
+            <span key={index}>{genresList[genre]}</span>
+          )}
+
         return (
-          <a href="#" key={index} >
-            <FontAwesomeIcon icon={genresList[genre]}/>,
-          </a>
+          <span key={index}>{genresList[genre]}, </span>
         )
-      })
+      });
 
     return (
-      <button className="text-dark-green text-sm bg-mint-cream shadow-md h-24  w-[100%] flex items-center m-auto overflow-hidden">
+      <Link to={`/show/:id`} className="text-dark-green text-sm bg-mint-cream shadow-md h-24  w-[100%] flex items-center m-auto overflow-hidden">
           <img src={image} alt="Podcast preview image" className="h-[75%] overflow-hidden"/>
-          <div className="text-left">
+          <div className="text-left line-clamp-4">
             <h2 className="font-bold">{title}</h2>
             <h3 className="font-light">Seasons: {seasons.length}</h3>
             <p className="font-light">Last Updated: {readeableDate}</p>
             {genreTags && <p>{genreTags}</p>}
           </div>
-      </button>
+      </Link>
     )
   }
 }

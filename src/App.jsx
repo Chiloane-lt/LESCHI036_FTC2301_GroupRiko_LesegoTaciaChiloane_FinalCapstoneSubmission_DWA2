@@ -12,6 +12,9 @@
  * App - Add error catching for all fetch requests.
  * App - Prettier all files before shipping off
  * Unsubscribe from all API calls by retunring useEffect cleanups
+ * App - Fix (prettify) Error 404 page
+ * Add JSDoc
+ * Add comments
  */
 
 import {

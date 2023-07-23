@@ -1,4 +1,3 @@
-import React from "react";
 import Carousel from "./Carousel";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
