@@ -12,7 +12,7 @@
  * App - Add error catching for all fetch requests.
  * App - Prettier all files before shipping off
  * Unsubscribe from all API calls by retunring useEffect cleanups
- * App - Fix (prettify) Error 404 page
+ * App - Fix, Handle All Errors Error 404 page
  * Add JSDoc
  * Add comments
  * App - Use NavLink for NavBar
@@ -30,6 +30,7 @@ import RootLayout from "./layouts/RootLayout";
 
 // pages
 import Home, { showsLoader } from './pages/Home'
+import ErrorPage from './pages/ErrorPage'
 import Favourites from './pages/Favourites'
 import User from './pages/User'
 import ShowLayout, { showDetailsLoader } from "./layouts/ShowLayout";
@@ -50,6 +51,7 @@ const router = createBrowserRouter(
       <Route/>
       <Route path='favourites' element={<Favourites/>} />
       <Route path='user' element={<User/>} />
+      <Route path='*' element={<ErrorPage />}/>
     </Route>
   )
 );
