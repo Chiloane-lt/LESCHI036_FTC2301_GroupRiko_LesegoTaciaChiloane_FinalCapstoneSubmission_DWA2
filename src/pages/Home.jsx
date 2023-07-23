@@ -1,20 +1,27 @@
+import NavBar from '../components/NavBar'
 import Hero from '../components/Hero'
 import GenreCards from '../components/GenreCards'
-import AllPreviews from '../components/AllPreviews'
+import PreviewsLayout from '../layouts/PreviewsLayout'
 
-import { ShowsContext, ShowsContextProvider } from '../hooks/showsContext'
-import NavBar from '../components/NavBar'
+import { useLoaderData } from 'react-router-dom'
+import { ShowsContextProvider } from '../hooks/showsContext'
 
 export default function Home() {
+  const shows = useLoaderData();
 
   return (
     <>
-      <NavBar />
+      <NavBar/>
       <Hero />
       <GenreCards />
-      <ShowsContextProvider>
-        <AllPreviews/>
-      </ShowsContextProvider>
+      <PreviewsLayout shows={shows}/>
     </>
   )
+}
+
+// loader function to fetch data
+
+export const showsLoader = async () => {
+  const response = await fetch('https://podcast-api.netlify.app/shows')
+  return response.json()
 }

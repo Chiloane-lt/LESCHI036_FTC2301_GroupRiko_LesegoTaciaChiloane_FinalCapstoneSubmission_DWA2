@@ -1,11 +1,12 @@
-import { useState, useContext, useEffect } from "react";
-import { Preview } from "./Preview";
-import { ShowsContext } from "../hooks/showsContext";
+import { useState } from "react";
+import { Preview } from "../components/Preview";
 import { useSort } from "../hooks/useSort";
-import { SortOptions } from "./SortOptions";
+import { SortOptions } from "../components/SortOptions";
 
-export default function AllPreviews() {
-  const [ showsData, setShowsData ] = useContext(ShowsContext);
+export default function PreviewsLayout(props) {
+
+  const { shows } = props;
+  const [ showsData, setShowsData ] = useState(shows);
   const [ sort, setSort ] = useState('none');
 
   const sortedShows = useSort(showsData, sort);

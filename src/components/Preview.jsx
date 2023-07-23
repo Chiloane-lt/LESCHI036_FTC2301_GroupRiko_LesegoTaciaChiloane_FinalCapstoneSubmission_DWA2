@@ -10,7 +10,7 @@ export const Preview = (props) => {
     fetch(`https://podcast-api.netlify.app/id/${showId}`)
       .then(res  => res.json())
       .then(showData => setCurrentShow(showData))
-  }, [])
+  }, [showId])
 
   if (!currentShow) {
     return (
@@ -62,7 +62,7 @@ export const Preview = (props) => {
       });
 
     return (
-      <Link to={`/show/:id`} className="text-dark-green text-sm bg-mint-cream shadow-md h-24  w-[100%] flex items-center m-auto overflow-hidden">
+      <Link to={`/show/${showId}`} className="text-dark-green text-sm bg-mint-cream shadow-md h-24  w-[100%] flex items-center m-auto overflow-hidden">
           <img src={image} alt="Podcast preview image" className="h-[75%]"/>
           <div className="text-left">
             <h2 className="font-bold">{title}</h2>

@@ -15,38 +15,41 @@
  * App - Fix (prettify) Error 404 page
  * Add JSDoc
  * Add comments
+ * App - Use NavLink for NavBar
  */
 
 import {
   createBrowserRouter,
+  createRoutesFromElements,
+  Route,
   RouterProvider,
 } from "react-router-dom";
 
-import Home from "./pages/Home"
-import ErrorPage from "./pages/ErrorPage"
-import Favourites from "./pages/Favourites"
-import User from "./pages/User"
-import ViewShow from './pages/ViewShow'
+// layouts
+import RootLayout from "./layouts/RootLayout";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-    errorElement: <ErrorPage />,
-  },
-  {
-    path: "/favourites",
-    element: <Favourites />,
-  },
-  {
-    path: "/user",
-    element: <User />,
-  },
-  {
-    path: "/show/:id",
-    element: <ViewShow />,
-  },
-]);
+// pages
+import Home, { showsLoader } from './pages/Home'
+import Favourites from './pages/Favourites'
+import User from './pages/User'
+
+// page sections
+import PreviewsLayout from "./layouts/PreviewsLayout";
+
+// loaders
+
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<RootLayout/>}>
+      <Route
+      index
+      element={<Home/>}
+      loader={showsLoader}/>
+      <Route path='/favourites' element={<Favourites/>} />
+      <Route path='/user' element={<User/>} />
+    </Route>
+  )
+);
 
 function App() {
 
