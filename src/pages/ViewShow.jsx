@@ -38,7 +38,6 @@ export default function ViewShow(props) {
     } else {
       setCurrentSeason(seasonNum)
     }
-
   }
 
   const seasonCards = show.seasons.map((season) => {

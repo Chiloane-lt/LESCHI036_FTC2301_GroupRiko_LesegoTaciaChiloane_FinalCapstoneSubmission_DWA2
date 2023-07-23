@@ -4,7 +4,6 @@ import GenreCards from '../components/GenreCards'
 import PreviewsLayout from '../layouts/PreviewsLayout'
 
 import { useLoaderData } from 'react-router-dom'
-import { ShowsContextProvider } from '../hooks/showsContext'
 
 export default function Home() {
   const shows = useLoaderData();

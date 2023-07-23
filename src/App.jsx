@@ -32,9 +32,7 @@ import RootLayout from "./layouts/RootLayout";
 import Home, { showsLoader } from './pages/Home'
 import Favourites from './pages/Favourites'
 import User from './pages/User'
-
-// page sections
-import PreviewsLayout from "./layouts/PreviewsLayout";
+import ShowLayout, { showDetailsLoader } from "./layouts/ShowLayout";
 
 // loaders
 
@@ -44,9 +42,14 @@ const router = createBrowserRouter(
       <Route
       index
       element={<Home/>}
-      loader={showsLoader}/>
-      <Route path='/favourites' element={<Favourites/>} />
-      <Route path='/user' element={<User/>} />
+      loader={showsLoader}
+      />
+        <Route path='show/:id'
+        element={<ShowLayout/>}
+        loader={showDetailsLoader}/>
+      <Route/>
+      <Route path='favourites' element={<Favourites/>} />
+      <Route path='user' element={<User/>} />
     </Route>
   )
 );
