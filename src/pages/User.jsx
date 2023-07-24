@@ -1,10 +1,13 @@
 import NavBar from '../components/NavBar'
+import Hero from '../components/Hero'
+import SignUpForm from '../components/SignUpForm'
 
-export default function User() {
+export default function User() { 
   return (
     <>
       <NavBar />
-      <h1>User page HERE!</h1>
+      <Hero />
+      <SignUpForm />
     </>
     )
 }
