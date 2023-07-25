@@ -34,6 +34,8 @@ import ErrorPage from './pages/ErrorPage'
 import Favourites from './pages/Favourites'
 import User from './pages/User'
 import ShowLayout, { showDetailsLoader } from "./layouts/ShowLayout";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/Signup";
 
 // loaders
 
@@ -51,6 +53,8 @@ const router = createBrowserRouter(
       <Route/>
       <Route path='favourites' element={<Favourites/>} />
       <Route path='user' element={<User/>} />
+      <Route path='signup' element={<SignUp/>}/>
+      <Route path='signin' element={<SignIn/>}/>
       <Route path='*' element={<ErrorPage />}/>
     </Route>
   )
@@ -62,7 +66,6 @@ function App() {
     <>
       <RouterProvider router={router} />
     </>
-
   )
 }
 
