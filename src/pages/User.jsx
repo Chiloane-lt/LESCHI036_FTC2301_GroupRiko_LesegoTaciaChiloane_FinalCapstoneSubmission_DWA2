@@ -7,7 +7,6 @@ export default function User() {
     <>
       <NavBar />
       <Hero />
-      <SignUpForm />
     </>
     )
 }
