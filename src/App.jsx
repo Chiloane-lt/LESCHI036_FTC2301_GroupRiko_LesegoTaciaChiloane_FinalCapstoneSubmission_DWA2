@@ -16,6 +16,7 @@
  * Add JSDoc
  * Add comments
  * App - Use NavLink for NavBar
+ * App - Check validation on ALL forms
  */
 
 import {
