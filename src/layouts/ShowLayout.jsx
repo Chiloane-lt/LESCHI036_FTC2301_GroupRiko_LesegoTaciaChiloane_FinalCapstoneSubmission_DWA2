@@ -3,7 +3,7 @@ import { useLoaderData, useParams } from "react-router-dom"
 
 // components
 import Carousel from '../components/Carousel';
-import Episodes from '../components/Episodes';
+import EpisodesContainer from '../components/EpisodesContainer'
 
 export default function ShowLayout(){
 const { id } = useParams();
@@ -45,7 +45,7 @@ const seasonCards = show.seasons.map((season) => {
       </figure>
       <p className="px-4 py-8 text-center text-sm text-dark-green">{show.description}</p>
       <Carousel name="Seasons" cards={seasonCards} />
-      {isOpen && <Episodes extractedSeason={show.seasons.filter((season) => {
+      {isOpen && <EpisodesContainer extractedSeason={show.seasons.filter((season) => {
         return season.season === currentSeason;
       })}/>}
     </>
