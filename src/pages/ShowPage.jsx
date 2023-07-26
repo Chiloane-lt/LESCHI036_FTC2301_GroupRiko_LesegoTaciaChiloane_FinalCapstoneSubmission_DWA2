@@ -8,22 +8,11 @@ import EpisodesContainer from '../components/EpisodesContainer'
 export default function ShowLayout(){
 const { id } = useParams();
 const show = useLoaderData();
+const [ currentSeason, setCurrentSeason ] = useState(1);
 
-const [ currentSeason, setCurrentSeason ] = useState();
-const [ isOpen, setIsOpen ] = useState(false);
 
 const seasonVisibilityHandler = (seasonNum) => {
-  if (!isOpen) {
-    setCurrentSeason(seasonNum);
-    setIsOpen(true);
-  }
-
-  if (currentSeason === seasonNum) {
-    setIsOpen(false);
-    setCurrentSeason(null);
-  } else {
-    setCurrentSeason(seasonNum)
-  }
+  setCurrentSeason(seasonNum)
 }
 
 const seasonCards = show.seasons.map((season) => {
@@ -45,9 +34,9 @@ const seasonCards = show.seasons.map((season) => {
       </figure>
       <p className="px-4 py-8 text-center text-sm text-dark-green">{show.description}</p>
       <Carousel name="Seasons" cards={seasonCards} />
-      {isOpen && <EpisodesContainer extractedSeason={show.seasons.filter((season) => {
+      <EpisodesContainer extractedSeason={show.seasons.filter((season) => {
         return season.season === currentSeason;
-      })}/>}
+      })}/>
     </>
   )
 }

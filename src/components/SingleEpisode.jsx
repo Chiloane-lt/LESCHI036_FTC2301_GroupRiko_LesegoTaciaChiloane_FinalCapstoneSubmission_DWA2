@@ -1,37 +1,38 @@
-import { useState } from "react";
+import { useState } from "react"
 
 // icons
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCirclePlay,
-  faAngleDown,
-  faAngleUp
-} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCirclePlay, faAngleDown, faAngleUp } from "@fortawesome/free-solid-svg-icons"
 
 // components
-import FavouriteButton from "./FavouriteButton";
+import FavouriteButton from "./FavouriteButton"
 
 function SingleEpisode(props) {
-  const { episode } = props;
-  const [ isDescriptionOpen, setIsDescriptionOpen ] = useState(false);
+  const { episode } = props
+  const [isDescriptionOpen, setIsDescriptionOpen] = useState(false)
 
   const toggleDropdown = () => {
-    setIsDescriptionOpen(prev => !prev);
+    setIsDescriptionOpen((prev) => !prev)
   }
 
+
+
   return (
-        <>
-      <div key={episode.episode} className="text-xs text-dark-green px-2 py-2 bg-platinum m-auto flex items-center w-[90%]">
-            <FontAwesomeIcon icon={faCirclePlay} className="text-3xl py-2"/>
-            <div>
-              <h1 className="font-bold">{episode.title}</h1>
-              <div>Episode {episode.episode} • 25:59</div>
-              <FavouriteButton />
-            </div>
-          {isDescriptionOpen ? <FontAwesomeIcon icon={faAngleUp} onClick={toggleDropdown}/> : <FontAwesomeIcon icon={faAngleDown} onClick={toggleDropdown}/>}
-        </div>
-        {isDescriptionOpen && <p>{episode.description}</p>}
-    </>
+    <div className="flex flex-col bg-mint-cream text-dark-green shadow-md">
+    <div className="h-20 flex items-center text-sm">
+      <FontAwesomeIcon icon={faCirclePlay} className="w-[15%] text-2xl"/>
+      <div className="w-[70%]">
+        <h1 className="font-medium">{episode.title}</h1>
+        <p>Episode {episode.episode} • <FavouriteButton /></p>
+      </div>
+      {isDescriptionOpen ? (
+            <FontAwesomeIcon icon={faAngleUp} onClick={toggleDropdown} className="w-[15%] text-xl"/>) : (
+            <FontAwesomeIcon icon={faAngleDown} onClick={toggleDropdown} className="w-[15%] text-xl"/>
+          )}
+    </div>
+    {isDescriptionOpen && <p className="text-xs px-8 pb-4 text-justify">{episode.description}</p>}
+    </div>
+
   )
 }
 

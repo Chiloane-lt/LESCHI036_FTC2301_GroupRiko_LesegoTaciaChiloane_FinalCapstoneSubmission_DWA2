@@ -15,7 +15,7 @@ export default function EpisodesContainer(props) {
   })
   return (
     <>
-      <div className="flex flex-col gap-2 p-4">
+      <div className="flex flex-col gap-2 p-4 bg-platinum">
         {episodeCards}
       </div>
     </>
