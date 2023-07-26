@@ -1,6 +1,7 @@
 import { Outlet } from 'react-router-dom'
 
 import NavBar from '../components/NavBar'
+import AudioPlayer from '../components/AudioPlayer'
 
 export default function RootLayout() {
   return (
@@ -9,6 +10,7 @@ export default function RootLayout() {
       <main>
         <Outlet />
       </main>
+      <AudioPlayer />
     </>
   )
 }

@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faPlayCircle, faPauseCircle } from "@fortawesome/free-solid-svg-icons"
 
 function AudioPlayer() {
+  const [ audio, setAudio ] = useState()
   const [ isPlaying, setIsPlaying ] = useState(false)
 
   // This will be added to a new state with all audio
@@ -45,8 +46,7 @@ function AudioPlayer() {
   }
 
   return (
-    <>
-      <div className="w-screen  bg-dark-green bg-opacity-50 backdrop-blur-sm px-4 fixed bottom-0 left-0 right-0">
+      <footer className="w-screen  bg-dark-green bg-opacity-80 backdrop-blur-sm px-4 fixed bottom-0 left-0 right-0">
         <div className="h-12 flex items-center">
           <img
             src="https://res.cloudinary.com/dumslp4el/image/fetch/w_676,h_676/https://content.production.cdn.art19.com/images/19/ac/06/ee/19ac06ee-4d75-41ea-9e92-c36b2c3c8703/cbaffd85daf5d39a448dd96faaf1d71c2d0071e8dc80f07d95c19b3fbaaa600f36df32f1656dbfd7b682e47c61ed3ebdc1d26c46dd3b823f98ff07b87849a0f4.jpeg"
@@ -58,9 +58,9 @@ function AudioPlayer() {
             <p>EP 1: Thai Cave Rescue</p>
           </div>
           {isPlaying ? (
-            <FontAwesomeIcon icon={faPauseCircle} onClick={toggleAudio} className="w-[20%] text-3xl text-mint-cream" />
+            <FontAwesomeIcon icon={faPauseCircle} onClick={toggleAudio} className="w-[10%] text-3xl text-mint-cream" />
           ) : (
-            <FontAwesomeIcon icon={faPlayCircle} onClick={toggleAudio} className="w-[20%] text-3xl text-mint-cream" />
+            <FontAwesomeIcon icon={faPlayCircle} onClick={toggleAudio} className="w-[10%] text-3xl text-mint-cream" />
           )}
         </div>
         <input
@@ -69,7 +69,7 @@ function AudioPlayer() {
         defaultValue={0}
         ref={progressBar}
         onChange={updateRange}
-        className="h-1 accent-dark-green"
+        className="h-1 accent-eerie-black w-[90%]"
         />
         <audio
         ref={ref}
@@ -77,8 +77,8 @@ function AudioPlayer() {
         onPause={() => setIsPlaying(false)}>
           <source src="https://podcast-api.netlify.app/placeholder-audio.mp3" type="audio/ogg" />
         </audio>
-      </div>
-    </>
+      </footer>
+
   )
 }
 
