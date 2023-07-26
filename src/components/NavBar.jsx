@@ -7,14 +7,14 @@ export default function NavBar() {
     <header
     className="h-16 w-full fixed bg-dark-green bg-opacity-50 backdrop-blur-sm">
       <nav className="flex justify-between px-4 mt-4 items-center">
-        <NavLink to={'/'} className="text-mint-cream">
+        <NavLink to={'/home'} className="text-mint-cream">
           Talk<span className="font-bold">BOX</span>
         </NavLink>
         <div className="w-1/4 flex justify-around">
-          <NavLink to={'/favourites'} >
+          <NavLink to={'/home/favourites'} >
             <FontAwesomeIcon icon={faHeart} className="h-4 min-[300px]:h-6 text-mint-cream"/>
           </NavLink>
-          <NavLink to={'/user'} >
+          <NavLink to={'/home/user'} >
             <FontAwesomeIcon icon={faCircleUser} className="h-4 min-[300px]:h-6 text-mint-cream"/>
           </NavLink>
         </div>

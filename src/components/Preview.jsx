@@ -62,7 +62,7 @@ export const Preview = (props) => {
       });
 
     return (
-      <Link to={`/show/${showId}`} className="text-dark-green text-sm bg-mint-cream shadow-md h-24  w-[100%] flex items-center m-auto overflow-hidden">
+      <Link to={`/home/show/${showId}`} className="text-dark-green text-sm bg-mint-cream shadow-md h-24  w-[100%] flex items-center m-auto overflow-hidden">
           <img src={image} alt="Podcast preview image" className="h-[75%]"/>
           <div className="text-left">
             <h2 className="font-bold">{title}</h2>

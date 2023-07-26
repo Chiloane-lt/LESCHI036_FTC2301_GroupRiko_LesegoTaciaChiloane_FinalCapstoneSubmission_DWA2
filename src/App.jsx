@@ -38,11 +38,15 @@ import ShowPage, { showDetailsLoader } from './pages/ShowPage';
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/Signup";
 
-// loaders
+// Global App State
+const user = {
+  isAuthenticated: false,
+  favourites: [],
+}
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/' element={<RootLayout/>}>
+    <Route path='/home' element={<RootLayout/>}>
       <Route
       index
       element={<Home/>}
@@ -54,8 +58,8 @@ const router = createBrowserRouter(
       <Route/>
       <Route path='favourites' element={<Favourites/>} />
       <Route path='user' element={<User/>} />
-      <Route path='signup' element={<SignUp/>}/>
       <Route path='signin' element={<SignIn/>}/>
+      <Route path='signup' element={<SignUp/>}/>
       <Route path='*' element={<ErrorPage />}/>
     </Route>
   )

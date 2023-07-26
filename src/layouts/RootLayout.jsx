@@ -10,6 +10,7 @@ export default function RootLayout() {
       <main>
         <Outlet />
       </main>
+      {/* Conditionally render based on whether audio in global state is on or not. */}
       <AudioPlayer />
     </>
   )
