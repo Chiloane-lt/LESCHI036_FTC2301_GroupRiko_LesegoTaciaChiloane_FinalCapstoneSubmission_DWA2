@@ -1,5 +1,7 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { useNavigate } from "react-router-dom";
 import { supabase } from '../supabaseClient'
+import { AuthContext } from "../hooks/AuthContext";
 
 export default function SignUpForm() {
   const [ formData, setFormData ] = useState({
@@ -9,6 +11,8 @@ export default function SignUpForm() {
     email: '',
     password: '',
   });
+
+  let navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,19 +25,18 @@ try {
       data: {
         name: formData.name,
         surname: formData.surname,
-        username: formData.surname,
       }
     }
   }
 )
 if (error) throw error
-alert('Check your email for verification link.')
+alert('Check your email for verification link.');
+navigate('/')
 
 } catch(error){
   alert(error)
 }
-
-  }
+}
 
   const handleChange = (e) => {
     setFormData((prevState)=>{
@@ -46,7 +49,7 @@ alert('Check your email for verification link.')
 
 return (
   <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
-    <input className="border border-solid border-dark-green"
+    <input className="border border-solid border-dark-green text-dark-green m-4"
     type="text"
     name='name'
     placeholder="name"
@@ -54,7 +57,7 @@ return (
     onChange={handleChange}
     />
 
-    <input className="border border-solid border-dark-green"
+    <input className="border border-solid border-dark-green text-dark-green m-4"
     type="text"
     name='surname'
     placeholder="surname"
@@ -62,15 +65,7 @@ return (
     onChange={handleChange}
     />
 
-    <input className="border border-solid border-dark-green"
-    type="text"
-    name='username'
-    placeholder="username"
-    required
-    onChange={handleChange}
-    />
-
-    <input className="border border-solid border-dark-green"
+    <input className="border border-solid border-dark-green text-dark-green m-4"
     type="email"
     name='email'
     placeholder="email"
@@ -78,7 +73,7 @@ return (
     onChange={handleChange}
     />
 
-    <input className="border border-solid border-dark-green"
+    <input className="border border-solid border-dark-green text-dark-green m-4"
     type="password"
     name='password'
     placeholder="password"
@@ -86,7 +81,7 @@ return (
     onChange={handleChange}
     />
 
-    <button className="border border-solid border-dark-green"
+    <button className="border border-solid border-dark-green text-dark-green m-4"
     type="submit">Sign Up</button>
   </form>
 )

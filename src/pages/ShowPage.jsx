@@ -5,7 +5,7 @@ import { useLoaderData, useParams } from "react-router-dom"
 import Carousel from '../components/Carousel';
 import EpisodesContainer from '../components/EpisodesContainer'
 
-export default function ShowLayout(){
+export default function ShowPage(){
 const { id } = useParams();
 const show = useLoaderData();
 const [ currentSeason, setCurrentSeason ] = useState(1);

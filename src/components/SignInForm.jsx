@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { supabase } from '../supabaseClient'
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../hooks/AuthContext";
+import { supabase } from '../supabaseClient';
 
 const SignInForm = () => {
   const [ formData, setFormData ] = useState({
@@ -8,7 +9,7 @@ const SignInForm = () => {
     password: '',
   });
 
-  let navigate = useNavigate();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ try {
   })
 
   if(error) throw error;
-  navigate('/')
+  navigate('/home')
 
 } catch(error){
   alert(error)
