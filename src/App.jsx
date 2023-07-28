@@ -41,17 +41,17 @@ import { useContext } from "react"
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route element={<AnonRoute/>} forceRefresh={true}>
-        <Route path="/" exact element={<Landing />}/>
+      <Route path="/" exact element={<AnonRoute/>}>
+        <Route index element={<Landing />}/>
         <Route path="signup" element={<SignUp />}/>
         <Route path="signin" element={<SignIn />}/>
       </Route>
-      <Route element={<AuthRoute/>} forceRefresh={true}>
-        <Route path='/home' element={<Home />} loader={showsLoader}/>
-        <Route path="show/:id" element={<ShowPage />}
+      <Route path='/home' exact element={<AuthRoute/>}>
+        <Route index element={<Home />} loader={showsLoader}/>
+        <Route path="show/:id" exact element={<ShowPage />}
         loader={showDetailsLoader} />
         <Route />
-        <Route path="favourites" element={<Favourites />}/>
+        <Route path="favourites" exact element={<Favourites />}/>
         <Route path="*" element={<ErrorPage />}/>
       </Route>
     </Route>
