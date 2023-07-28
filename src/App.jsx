@@ -17,61 +17,51 @@
  * Add comments
  * App - Use NavLink for NavBar
  * App - Check validation on ALL forms
+ * Home - Change images to use jpeg
  */
 
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
 
-// layouts
-import RootLayout from "./layouts/RootLayout";
+import { AuthContext } from "./hooks/AuthContext"
+
+// Restricted routes
+import AnonRoute from "./layouts/AnonRoute"
+import AuthRoute from "./layouts/AuthRoute"
 
 // pages
-import Home, { showsLoader } from './pages/Home'
-import ErrorPage from './pages/ErrorPage'
-import Favourites from './pages/Favourites'
-import User from './pages/User'
-import ShowPage, { showDetailsLoader } from './pages/ShowPage';
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/Signup";
-
-// Global App State
-const user = {
-  isAuthenticated: false,
-  favourites: [],
-}
+import Landing from "./pages/Landing"
+import Home, { showsLoader } from "./pages/Home"
+import ErrorPage from "./pages/ErrorPage"
+import Favourites from "./pages/Favourites"
+import ShowPage, { showDetailsLoader } from "./pages/ShowPage"
+import SignIn from "./pages/SignIn"
+import SignUp from "./pages/Signup"
+import { useContext } from "react"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path='/home' element={<RootLayout/>}>
-      <Route
-      index
-      element={<Home/>}
-      loader={showsLoader}
-      />
-        <Route path='show/:id'
-        element={<ShowPage/>}
-        loader={showDetailsLoader}/>
-      <Route/>
-      <Route path='favourites' element={<Favourites/>} />
-      <Route path='user' element={<User/>} />
-      <Route path='signin' element={<SignIn/>}/>
-      <Route path='signup' element={<SignUp/>}/>
-      <Route path='*' element={<ErrorPage />}/>
+    <Route>
+      <Route element={<AnonRoute/>} forceRefresh={true}>
+        <Route path="/" exact element={<Landing />}/>
+        <Route path="signup" element={<SignUp />}/>
+        <Route path="signin" element={<SignIn />}/>
+      </Route>
+      <Route element={<AuthRoute/>} forceRefresh={true}>
+        <Route path='/home' element={<Home />} loader={showsLoader}/>
+        <Route path="show/:id" element={<ShowPage />}
+        loader={showDetailsLoader} />
+        <Route />
+        <Route path="favourites" element={<Favourites />}/>
+        <Route path="*" element={<ErrorPage />}/>
+      </Route>
     </Route>
   )
-);
+)
 
 function App() {
+  const [auth] = useContext(AuthContext)
 
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App

@@ -11,10 +11,9 @@ const AuthContextProvider = ({ children }) => {
       const { data, error } = await supabase.auth.getSession();
       setAuth(data.session?.access_token) 
       // ?. operator to prevent errror after log out.
-
     }
     fetchUser();
-  }, []);
+  }, [auth]);
 
   return (
     <AuthContext.Provider value={[ auth, setAuth ]}>

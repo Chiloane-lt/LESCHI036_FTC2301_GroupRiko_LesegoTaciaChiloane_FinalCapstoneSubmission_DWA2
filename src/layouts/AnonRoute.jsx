@@ -1,14 +1,19 @@
-/**
- * Anonymous route
- * Checks to see if user is authenticated. Blocks out authenticated users
- * NB to prvent logged in users from accessing log in and sign up page after
- * logging in
- */
+import { useContext, useEffect } from "react"
+import { Outlet, Navigate, useNavigate } from "react-router-dom"
+import { AuthContext } from "../hooks/AuthContext"
 
 function AnonRoute() {
-  return (
-    <div>AnonRoute</div>
-  )
+  const [auth] = useContext(AuthContext)
+
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(auth) {
+      navigate('../home', {replace: true})
+    }
+  }, [auth])
+
+
+  return <Outlet />
 }
 
 export default AnonRoute

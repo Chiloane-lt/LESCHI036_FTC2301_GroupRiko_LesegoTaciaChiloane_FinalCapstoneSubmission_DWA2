@@ -1,15 +1,17 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { supabase } from '../supabaseClient'
+import { AuthContext } from "../hooks/AuthContext"
 
 function UserSettings(props) {
   const { active, setter } = props
+  const [ auth, setAuth ] = useContext(AuthContext)
   const navigate = useNavigate()
 
   const handleSignOut = async () => {
     const { error } = await supabase.auth.signOut()
-    navigate("/")
-    console.log('logged out')
+    navigate('/')
+    setAuth(undefined)
   }
 
   return (
