@@ -18,6 +18,8 @@
  * App - Use NavLink for NavBar
  * App - Check validation on ALL forms
  * Home - Change images to use jpeg
+ * App - Fix restricted routes reroute snap
+ * main - move useContext back to App.jsx
  */
 
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
@@ -59,8 +61,6 @@ const router = createBrowserRouter(
 )
 
 function App() {
-  const [auth] = useContext(AuthContext)
-
   return <RouterProvider router={router} />
 }
 
