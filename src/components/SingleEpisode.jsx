@@ -10,7 +10,7 @@ import FavouriteButton from "./FavouriteButton"
 import useFavouriteCheck from "../hooks/useFavouriteCheck"
 
 function SingleEpisode(props) {
-  const { episode, show } = props
+  const { episode, show, season } = props
 
   // Get duration
   const [duration, setDuration] = useState("00:00")
@@ -36,6 +36,7 @@ function SingleEpisode(props) {
   const data = {
     'show': show,
     'episode': episode,
+    'season' : season,
   }
 
 

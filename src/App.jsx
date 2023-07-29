@@ -21,7 +21,7 @@
  * App - Fix restricted routes reroute snap
  * main - move useContext back to App.jsx
  * app - unsubscribe supabase on log out
- * Favourites - fix favourites render issue
+ * Favourites - fix favourites render issue. Put inside useEffect with season as dependency
  */
 
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"

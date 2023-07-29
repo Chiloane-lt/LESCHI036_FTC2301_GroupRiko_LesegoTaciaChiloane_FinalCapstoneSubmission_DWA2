@@ -1,7 +1,7 @@
 import SingleEpisode from "./SingleEpisode";
 
 export default function EpisodesContainer(props) {  
-  const { season: { show, extractedSeason } } = props;
+  const { season: { show, extractedSeason, season } } = props;
 
     if(!extractedSeason[0]) {
       return <h1>Loading Episodes...</h1>
@@ -10,7 +10,7 @@ export default function EpisodesContainer(props) {
   const seasonEpisodes = extractedSeason[0].episodes;
   const episodeCards = seasonEpisodes.map((episode) => {
     return (
-      <SingleEpisode key={episode.episode} episode={episode} show={show}/>
+      <SingleEpisode key={episode.episode} episode={episode} show={show} season={season}/>
     )
   })
   return (

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import useFavouritesUpdate from "../hooks/useFavouritesUpdate"
 
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -7,17 +8,23 @@ import { faHeart as FaHeart } from "@fortawesome/free-regular-svg-icons"
 
 function FavouriteButton(props) {
   const { state, data } = props
-  const [isFavourite, setIsFavourite] = useState(state)
+  const [ isFavourite, setIsFavourite ] = useState(state);
+  const updateFavourites = useFavouritesUpdate(isFavourite, data.episode, data.show, data.season);
+
 
   useEffect(() => {
     setIsFavourite(state)
   }, [state])
 
-  const toggleFavourite = () => {
+  const toggleFavourite = async () => {
     setIsFavourite((prev) => {
       return !prev
     })
+
+    const result = updateFavourites;
+    console.log(result); // Either "Success!" or the error message
   }
+
   return (
     <>
       {isFavourite ? (

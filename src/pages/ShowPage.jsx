@@ -41,7 +41,8 @@ const seasonCards = show.seasons.map((season) => {
           extractedSeason: show.seasons.filter((season) => {
         return season.season === currentSeason
       }),
-      show: id,}}/>
+      show: id,
+      season: currentSeason}}/>
     </>
   )
 }
