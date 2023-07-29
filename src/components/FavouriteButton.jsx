@@ -6,7 +6,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons"
 import { faHeart as FaHeart } from "@fortawesome/free-regular-svg-icons"
 
 function FavouriteButton(props) {
-  const { state } = props
+  const { state, data } = props
   const [isFavourite, setIsFavourite] = useState(state)
 
   useEffect(() => {
@@ -15,7 +15,6 @@ function FavouriteButton(props) {
 
   const toggleFavourite = () => {
     setIsFavourite((prev) => {
-      console.log(prev)
       return !prev
     })
   }

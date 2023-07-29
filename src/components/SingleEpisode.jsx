@@ -10,7 +10,7 @@ import FavouriteButton from "./FavouriteButton"
 import useFavouriteCheck from "../hooks/useFavouriteCheck"
 
 function SingleEpisode(props) {
-  const { episode } = props
+  const { episode, show } = props
 
   // Get duration
   const [duration, setDuration] = useState("00:00")
@@ -32,7 +32,12 @@ function SingleEpisode(props) {
   }
 
   // handle favourites
-  const isFavourite = useFavouriteCheck(`${episode.title}`)
+  const isFavourite = useFavouriteCheck(`${episode.title}`);
+  const data = {
+    'show': show,
+    'episode': episode,
+  }
+
 
   return (
     <div className="flex flex-col bg-mint-cream text-dark-green shadow-md">
@@ -41,8 +46,8 @@ function SingleEpisode(props) {
         <div className="w-[70%]">
           <h1 className="font-medium">{episode.title}</h1>
           <p className="font-light">
-            Episode {episode.episode} • <FavouriteButton state={isFavourite} /> •{" "}
-            {duration ? getTimeStamp(duration) : "00:00"}
+            Episode {episode.episode} • <FavouriteButton state={isFavourite}
+            data={data}/> • {duration ? getTimeStamp(duration) : "00:00"}
           </p>
         </div>
         {isDescriptionOpen ? (

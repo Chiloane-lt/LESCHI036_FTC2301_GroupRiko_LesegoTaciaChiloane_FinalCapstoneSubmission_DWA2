@@ -26,6 +26,7 @@ const seasonCards = show.seasons.map((season) => {
   )
 })
 
+
   return (
     <>
       <figure className="flex items-center h-[36vh] bg-dark-green text-mint-cream font-extrabold px-4 justify-around">
@@ -34,9 +35,13 @@ const seasonCards = show.seasons.map((season) => {
       </figure>
       <p className="px-4 py-8 text-center text-sm text-dark-green">{show.description}</p>
       <Carousel name="Seasons" cards={seasonCards} />
-      <EpisodesContainer extractedSeason={show.seasons.filter((season) => {
-        return season.season === currentSeason;
-      })}/>
+      <EpisodesContainer
+      season={
+        {
+          extractedSeason: show.seasons.filter((season) => {
+        return season.season === currentSeason
+      }),
+      show: id,}}/>
     </>
   )
 }
