@@ -20,11 +20,11 @@
  * Home - Change images to use jpeg
  * App - Fix restricted routes reroute snap
  * main - move useContext back to App.jsx
+ * app - unsubscribe supabase on log out
+ * Favourites - fix favourites render issue
  */
 
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom"
-
-import { AuthContext } from "./hooks/AuthContext"
 
 // Restricted routes
 import AnonRoute from "./layouts/AnonRoute"
@@ -38,30 +38,30 @@ import Favourites from "./pages/Favourites"
 import ShowPage, { showDetailsLoader } from "./pages/ShowPage"
 import SignIn from "./pages/SignIn"
 import SignUp from "./pages/Signup"
-import { useContext } from "react"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      <Route path="/" exact element={<AnonRoute/>}>
-        <Route index element={<Landing />}/>
-        <Route path="signup" element={<SignUp />}/>
-        <Route path="signin" element={<SignIn />}/>
+      <Route path="/" exact element={<AnonRoute />}>
+        <Route index element={<Landing />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="signin" element={<SignIn />} />
       </Route>
-      <Route path='/home' exact element={<AuthRoute/>}>
-        <Route index element={<Home />} loader={showsLoader}/>
-        <Route path="show/:id" exact element={<ShowPage />}
-        loader={showDetailsLoader} />
+      <Route path="/home" exact element={<AuthRoute />}>
+        <Route index element={<Home />} loader={showsLoader} />
+        <Route path="show/:id" exact element={<ShowPage />} loader={showDetailsLoader} />
         <Route />
-        <Route path="favourites" exact element={<Favourites />}/>
-        <Route path="*" element={<ErrorPage />}/>
+        <Route path="favourites" exact element={<Favourites />} />
+        <Route path="*" element={<ErrorPage />} />
       </Route>
     </Route>
   )
 )
 
 function App() {
-  return <RouterProvider router={router} />
+  return (
+    <RouterProvider router={router} />
+  )
 }
 
 export default App
