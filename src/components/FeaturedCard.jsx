@@ -7,7 +7,7 @@ import Carousel from "./Carousel";
 // Search Genre for 'Featured'
 // 
 
-export default function Featured(props){
+export default function FeaturedCard(props){
   const { id } = props;
   const [ featuredShow, setFeaturedShow ] = useState()
   const [error, setError] = useState(null); // Add an error state
