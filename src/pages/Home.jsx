@@ -8,7 +8,6 @@ import { useLoaderData } from 'react-router-dom'
 import FeaturedCarousel from '../components/FeaturedCarousel'
 
 export default function Home() {
-  const shows = useLoaderData();
 
   return (
     <>
@@ -21,9 +20,3 @@ export default function Home() {
   )
 }
 
-// loader function to fetch data
-
-export const showsLoader = async () => {
-  const response = await fetch('https://podcast-api.netlify.app/shows')
-  return response.json()
-}

@@ -1,5 +1,6 @@
 /**
  * TO-DO:
+ * NB!!!!!! Add navbar to show view
  * Preview - Update preview styling
  * Preview - Match placeholder to actual preview
  * Preview - Shrink text with screen size
@@ -28,11 +29,11 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 
 // Restricted routes
 import AnonRoute from "./layouts/AnonRoute"
-import AuthRoute from "./layouts/AuthRoute"
+import AuthRoute, { showsLoader }from "./layouts/AuthRoute"
 
 // pages
 import Landing from "./pages/Landing"
-import Home, { showsLoader } from "./pages/Home"
+import Home from "./pages/Home"
 import ErrorPage from "./pages/ErrorPage"
 import Favourites from "./pages/Favourites"
 import ShowPage, { showDetailsLoader } from "./pages/ShowPage"
