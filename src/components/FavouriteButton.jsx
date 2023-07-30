@@ -20,9 +20,6 @@ function FavouriteButton(props) {
     setIsFavourite((prev) => {
       return !prev
     })
-
-    const result = updateFavourites;
-    console.log(result); // Either "Success!" or the error message
   }
 
   return (
