@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom"
+import { Link, useLoaderData } from "react-router-dom"
 import FeaturedCard from "./FeaturedCard";
 import Carousel from "./Carousel";
 
@@ -9,10 +9,10 @@ const FeaturedCarousel = () => {
   }
 
   const FeaturedShows = shows.map((show, index) => {
-    return <FeaturedCard key={index} id={show.id}/>
+    return (
+      <FeaturedCard key={index} id={show.id}/>
+    )
   })
-
-  console.log(FeaturedShows)
 
   return (
     <>
