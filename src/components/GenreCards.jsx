@@ -40,7 +40,7 @@ export default function GenreCards(){
     return (
       <div key={index}
       className="bg-dark-green text-center text-mint-cream font-light
-      aspect-square h-full m-1  flex-col flex justify-center items-center">
+      aspect-square h-full flex-col flex justify-center items-center">
         <FontAwesomeIcon icon={genreIcons[index]} 
         className="h-[30%]"/>
         <h3 className="text-xs">{genre}</h3>

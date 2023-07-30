@@ -9,7 +9,7 @@ export default function Carousel(props) {
       <h1 className="px-4 font-semibold">{name}</h1>
       <div className="flex items-center bg-platinum">
         <FontAwesomeIcon icon={faAngleLeft} className="h-6 text-mint-cream"/>
-          <div className="flex items-center overflow-x-scroll overflow-y-hidden h-24 py-2 bg-platinum">
+          <div className="flex items-center gap-x-2 overflow-x-scroll overflow-y-hidden h-24 py-2 bg-platinum">
             {cards}
           </div>
           <FontAwesomeIcon icon={faAngleRight} className="h-6 text-mint-cream"/>
