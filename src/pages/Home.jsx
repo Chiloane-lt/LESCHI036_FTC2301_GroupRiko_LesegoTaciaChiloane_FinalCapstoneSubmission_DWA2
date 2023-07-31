@@ -10,7 +10,6 @@ export default function Home() {
 const shows = useLoaderData();
   return (
     <>
-      <NavBar/>
       <Hero />
       <FeaturedCarousel/>
       <GenreCards />
