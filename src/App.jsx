@@ -37,8 +37,8 @@ import Home from "./pages/Home"
 import ErrorPage from "./pages/ErrorPage"
 import Favourites from "./pages/Favourites"
 import ShowPage, { showDetailsLoader } from "./pages/ShowPage"
-import SignIn from "./pages/SignIn"
-import SignUp from "./pages/Signup"
+import SignUp from "./pages/SignUp"
+import SignIn from './pages/SignIn'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
