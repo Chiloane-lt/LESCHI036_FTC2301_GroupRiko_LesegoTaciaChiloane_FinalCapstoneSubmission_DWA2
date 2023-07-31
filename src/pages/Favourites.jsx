@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react"
 import { supabase } from "../supabaseClient"
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faSpinner } from "@fortawesome/free-solid-svg-icons"
+
 import NavBar from "../components/NavBar"
 import Hero from "../components/Hero"
 import FavouritesCards from "../components/FavouritesCards"
@@ -46,11 +49,12 @@ const Favourites = () => {
 
   return (
     <>
-      <NavBar />
       <Hero />
-      {isLoading && <h1>Loading...</h1>}
-      {!isLoading && favourites.length === 0 && <h1>No favourites found.</h1>}
-      {!isLoading && groupedContainers}
+      <main className="flex justify-center items-center flex-col">
+        {isLoading && <FontAwesomeIcon icon={faSpinner} className="animate-spin text-dark-green text-6xl py-12"/>}
+        {!isLoading && favourites.length === 0 && <h1>No favourites found.</h1>}
+        {!isLoading && groupedContainers}
+      </main>
     </>
   )
 }

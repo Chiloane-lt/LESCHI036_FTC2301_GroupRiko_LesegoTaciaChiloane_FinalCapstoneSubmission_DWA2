@@ -7,7 +7,7 @@ import { useSort } from "../hooks/useSort"
 import { SortOptions } from "../components/SortOptions"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
+import { faMagnifyingGlass, faSpinner } from "@fortawesome/free-solid-svg-icons"
 
 export default function PreviewsLayout(props) {
 
@@ -36,7 +36,7 @@ export default function PreviewsLayout(props) {
     setSort('none') // Fuse.js sorts results by relevance.
   }
   if (!sortedShows) {
-    return <h1>Loading Previews...</h1>
+    return <FontAwesomeIcon icon={faSpinner} className="animate-spin text-dark-green text-6xl py-12" />
   }
 
 

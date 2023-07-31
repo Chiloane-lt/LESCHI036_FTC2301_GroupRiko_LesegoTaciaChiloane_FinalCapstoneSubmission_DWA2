@@ -1,10 +1,13 @@
 import SingleEpisode from "./SingleEpisode";
 
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+
 export default function EpisodesContainer(props) {  
   const { season: { show, extractedSeason, season } } = props;
 
     if(!extractedSeason[0]) {
-      return <h1>Loading Episodes...</h1>
+      return <FontAwesomeIcon icon={faSpinner} className="animate-spin text-dark-green text-6xl py-12"/>
     }
 
   const seasonEpisodes = extractedSeason[0].episodes;
