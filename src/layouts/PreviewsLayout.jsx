@@ -10,19 +10,35 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"
 
 export default function PreviewsLayout(props) {
+
+  // Handle fuse.js search
   const { shows } = props;
-  const [showsData, setShowsData] = useState(shows);
+  const fuse = new Fuse(shows, {
+    keys: [
+      'title',
+    ]
+  });
   const [ searchQuery, setSearchQuery ] = useState('');
+  const searchResults = fuse.search(searchQuery)
+
+  // Fuse.js returns results as an object nested
+  // inside another property under an 'item' key
+  // Therefore, must move result objects up a level
+  // Set to all shows in no search has been passed
+  const reducedSearch = searchQuery ? searchResults.map((obj) => obj.item) : shows;
+
+// Sort the resulting search results. Or just sort all shows if no search.
   const [sort, setSort] = useState("none");
-  const sortedShows = useSort(showsData, sort);
+  const sortedShows = useSort(reducedSearch, sort);
 
   const handleSearch = (event) => {
     setSearchQuery(event.target.value)
+    setSort('none') // Fuse.js sorts results by relevance.
   }
-
   if (!sortedShows) {
     return <h1>Loading Previews...</h1>
   }
+
 
   const allPreviews = sortedShows.map((show) => {
     return <Preview key={show.id} showId={show.id} genres={show.genres} />
