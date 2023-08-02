@@ -1,17 +1,13 @@
-import { Link } from "react-router-dom"
 import SignUpForm from "../components/SignUpForm"
+import logo from "../assets/talkbox-signIn.svg"
 
 const SignUp = () => {
   return (
-    <main className="bg-[url('https://cdn.pixabay.com/photo/2020/06/07/02/16/fantasy-5268744_960_720.jpg')] bg-center bg-no-repeat h-screen w-screen text-mint-cream">
-      <h1 className="text-center">Talk<span>BOX</span></h1>
+    <section className="w-screen h-screen bg-[url('https://cdn.pixabay.com/photo/2018/08/21/23/29/forest-3622519_1280.jpg')] bg-cover bg-center bg-no-repeat overflow-hidden flex flex-col justify-center items-center">
+      <img src={logo} alt="talkBox logo" className="w-[40%] m-8" />
       <SignUpForm />
-      <Link to={'signin'}
-      className="underline">
-        Already have an account?
-      </Link>
-    </main>
-    )
+    </section>
+  )
 }
 
 export default SignUp
