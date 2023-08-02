@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle, faPauseCircle } from "@fortawesome/free-solid-svg-icons";
 
-function AudioPlayer({ image, title, episode, episodeTitle, audioSource }) {
+function AudioPlayer({ image, title, episodeTitle, audioSource }) {
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
@@ -42,7 +42,7 @@ function AudioPlayer({ image, title, episode, episodeTitle, audioSource }) {
   };
 
   return (
-    <footer className="w-screen bg-dark-green bg-opacity-80 backdrop-blur-sm px-4 fixed bottom-0 left-0 right-0">
+    <footer className="w-screen bg-dark-green bg-opacity-80 backdrop-blur-sm px-4 pt-2 fixed bottom-0 left-0 right-0">
       <div className="h-12 flex items-center">
         <img
           src={image}
@@ -51,7 +51,7 @@ function AudioPlayer({ image, title, episode, episodeTitle, audioSource }) {
         />
         <div className="w-[68%] text-sm text-mint-cream indent-4">
           <h1>{title}</h1>
-          <p className="italic font-thin">Episode {episode}: {episodeTitle}</p>
+          <p className="italic font-thin line-clamp-1">{episodeTitle}</p>
         </div>
         {isPlaying ? (
           <FontAwesomeIcon

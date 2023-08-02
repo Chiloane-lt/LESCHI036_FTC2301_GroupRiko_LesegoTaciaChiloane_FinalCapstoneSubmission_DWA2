@@ -26,7 +26,6 @@ const seasonCards = show.seasons.map((season) => {
   )
 })
 
-
   return (
     <>
       <figure className="flex items-center h-[36vh] bg-dark-green text-mint-cream font-extrabold px-4 justify-around">
@@ -41,7 +40,7 @@ const seasonCards = show.seasons.map((season) => {
           extractedSeason: show.seasons.filter((season) => {
         return season.season === currentSeason
       }),
-      show: id,
+      show: show.title,
       season: currentSeason}}/>
     </>
   )

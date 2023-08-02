@@ -1,5 +1,4 @@
 import { useRef, useState, useEffect } from "react"
-import { supabase } from "../supabaseClient"
 
 // icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -8,9 +7,18 @@ import { faCirclePlay, faAngleDown, faAngleUp } from "@fortawesome/free-solid-sv
 // components
 import FavouriteButton from "./FavouriteButton"
 import useFavouriteCheck from "../hooks/useFavouriteCheck"
+import { useOutletContext } from "react-router-dom"
+
+
+
+
+
+
+
 
 function SingleEpisode(props) {
-  const { episode, show, season } = props
+  const { episode, show, season, image } = props;
+  const [ isPlaying, setIsPlaying, currentShow, setCurrentShow ] = useOutletContext();
 
   // Get duration
   const [duration, setDuration] = useState("00:00")
@@ -39,11 +47,24 @@ function SingleEpisode(props) {
     'season' : season,
   }
 
+  // Handle Audio player
+  const playAudio = () => {
+    setIsPlaying(true)
+    setCurrentShow({
+      show: show,
+      image: image,
+      episodeTitle: episode.title,
+      file: episode.file,
+    })
+  }
 
   return (
     <div className="flex flex-col bg-mint-cream text-dark-green shadow-md">
       <div className="h-20 flex items-center text-sm">
-        <FontAwesomeIcon icon={faCirclePlay} className="w-[15%] text-2xl" />
+        <FontAwesomeIcon
+        icon={faCirclePlay}
+        onClick={playAudio}
+        className="w-[15%] text-2xl" />
         <div className="w-[70%]">
           <h1 className="font-medium">{episode.title}</h1>
           <p className="font-light">
