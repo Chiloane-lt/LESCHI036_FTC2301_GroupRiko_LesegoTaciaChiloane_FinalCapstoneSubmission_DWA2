@@ -2,8 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlayCircle, faPauseCircle } from "@fortawesome/free-solid-svg-icons";
 
-function ReusableAudioPlayer({ coverImage, title, episode, episodeTitle, audioSource }) {
-  const [audio, setAudio] = useState();
+function AudioPlayer({ image, title, episode, episodeTitle, audioSource }) {
+
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
 
@@ -45,7 +45,7 @@ function ReusableAudioPlayer({ coverImage, title, episode, episodeTitle, audioSo
     <footer className="w-screen bg-dark-green bg-opacity-80 backdrop-blur-sm px-4 fixed bottom-0 left-0 right-0">
       <div className="h-12 flex items-center">
         <img
-          src={coverImage}
+          src={image}
           alt="podcast cover image"
           className="h-[80%]"
         />
@@ -86,4 +86,4 @@ function ReusableAudioPlayer({ coverImage, title, episode, episodeTitle, audioSo
   );
 }
 
-export default ReusableAudioPlayer;
+export default AudioPlayer;
